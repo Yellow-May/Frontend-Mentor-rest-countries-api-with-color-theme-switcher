@@ -1,9 +1,14 @@
-import React from 'react';
+import React from "react";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Header from "./components/Header";
 
 function App() {
-  return (
-    <></>
-  );
+	return (
+		<>
+			<CssBaseline />
+			<Header />
+		</>
+	);
 }
 
 export default App;
