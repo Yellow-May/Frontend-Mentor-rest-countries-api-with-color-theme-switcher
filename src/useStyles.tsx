@@ -6,8 +6,11 @@ const useStyles = makeStyles((theme: Theme) =>
 			padding: theme.spacing(1.5),
 			paddingLeft: 0,
 			paddingRight: 0,
-			[theme.breakpoints.up("sm")]: {
+			[theme.breakpoints.up("md")]: {
 				padding: "0 2.5%",
+			},
+			[theme.breakpoints.up("lg")]: {
+				padding: "0 4%",
 			},
 		},
 	})
