@@ -15,16 +15,20 @@ const filterBy = ["Africa", "America", "Asia", "Europe", "Oceanic"];
 const Filters = () => {
 	const classes = useStyles();
 
-	const [age, setAge] = React.useState("");
+	const [formData, setFormData] = React.useState({
+		searchBy: "",
+		filterBy: "",
+	});
 
-	const [amount, setAmount] = React.useState("");
-
-	const handleChange2 = (event: React.ChangeEvent<{ value: unknown }>) => {
-		setAmount(event.target.value as string);
-	};
-
-	const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-		setAge(event.target.value as string);
+	const handleChange = (
+		event: React.ChangeEvent<{ value: unknown; name?: string }>
+	) => {
+		setFormData((prevData: typeof formData) => {
+			return {
+				...prevData,
+				[event.target.name as string]: event.target.value as string,
+			};
+		});
 	};
 
 	return (
@@ -36,8 +40,9 @@ const Filters = () => {
 					</InputLabel>
 					<OutlinedInput
 						id='outlined-adornment-amount'
-						value={amount}
-						onChange={handleChange2}
+						name='searchBy'
+						value={formData.searchBy}
+						onChange={handleChange}
 						startAdornment={
 							<InputAdornment position='start'>
 								<SearchIcon />
@@ -58,7 +63,8 @@ const Filters = () => {
 					<Select
 						labelId='demo-simple-select-outlined-label'
 						id='demo-simple-select-outlined'
-						value={age}
+						name='filterBy'
+						value={formData.filterBy}
 						onChange={handleChange}
 						label='Filter by Region'>
 						<MenuItem value=''>
