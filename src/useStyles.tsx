@@ -7,10 +7,24 @@ const useStyles = makeStyles((theme: Theme) =>
 			paddingLeft: 0,
 			paddingRight: 0,
 			[theme.breakpoints.up("md")]: {
-				padding: "0 2.5%",
+				padding: 0,
 			},
 			[theme.breakpoints.up("lg")]: {
-				padding: "0 4%",
+				padding: "0 3.5rem",
+			},
+		},
+		gridSpacing: {
+			marginTop: theme.spacing(2),
+			marginBottom: theme.spacing(2),
+			[theme.breakpoints.up("md")]: {
+				marginTop: theme.spacing(3),
+				marginBottom: theme.spacing(3),
+			},
+		},
+		filterGridII: {
+			marginTop: theme.spacing(3),
+			[theme.breakpoints.up("sm")]: {
+				marginTop: 0,
 			},
 		},
 	})
