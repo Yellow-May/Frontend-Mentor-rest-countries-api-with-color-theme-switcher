@@ -2,6 +2,7 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme: Theme) =>
 	createStyles({
+		// Header component
 		header: {
 			padding: theme.spacing(1.5),
 			paddingLeft: 0,
@@ -13,6 +14,8 @@ const useStyles = makeStyles((theme: Theme) =>
 				padding: "0 3.5rem",
 			},
 		},
+
+		// App component
 		gridSpacing: {
 			marginTop: theme.spacing(2),
 			marginBottom: theme.spacing(2),
@@ -21,6 +24,8 @@ const useStyles = makeStyles((theme: Theme) =>
 				marginBottom: theme.spacing(3),
 			},
 		},
+
+		// Filter component
 		filterGridII: {
 			marginTop: theme.spacing(3),
 			[theme.breakpoints.up("sm")]: {
