@@ -29,7 +29,7 @@ const Header = (props: { event: () => void; dark: boolean }) => {
 
 				<Button color='inherit' onClick={() => props.event()}>
 					{props.dark ? <Brightness7Icon /> : <NightsStayIcon />}
-					<Typography variant='button' style={{ marginLeft: "1rem" }}>
+					<Typography variant='button' className={classes.btnTypo}>
 						{props.dark ? "Light Mode" : "Dark Mode"}
 					</Typography>
 				</Button>
