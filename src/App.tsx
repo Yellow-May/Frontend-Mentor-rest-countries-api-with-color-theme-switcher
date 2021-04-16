@@ -15,6 +15,7 @@ import Filters from "./components/Filters";
 import Countries from "./components/Countries";
 
 import useStyles from "./useStyles";
+import { AppProvider } from "./store";
 
 const themeType = (dark: boolean) =>
 	createMuiTheme({
@@ -38,26 +39,28 @@ function App() {
 	const changeTheme = () => setDark(!dark);
 
 	return (
-		<ThemeProvider theme={theme}>
-			<CssBaseline />
-			<Paper elevation={0} square={true}>
-				<Header event={changeTheme} dark={dark} />
-				<Container>
-					<Grid container style={{ padding: "2rem 0" }}>
-						<Grid
-							item
-							container
-							xs={12}
-							className={classes.gridSpacing}>
-							<Filters />
+		<AppProvider>
+			<ThemeProvider theme={theme}>
+				<CssBaseline />
+				<Paper elevation={0} square={true}>
+					<Header event={changeTheme} dark={dark} />
+					<Container>
+						<Grid container style={{ padding: "2rem 0" }}>
+							<Grid
+								item
+								container
+								xs={12}
+								className={classes.gridSpacing}>
+								<Filters />
+							</Grid>
+							<Grid item xs={12} className={classes.gridSpacing}>
+								<Countries />
+							</Grid>
 						</Grid>
-						<Grid item xs={12} className={classes.gridSpacing}>
-							<Countries />
-						</Grid>
-					</Grid>
-				</Container>
-			</Paper>
-		</ThemeProvider>
+					</Container>
+				</Paper>
+			</ThemeProvider>
+		</AppProvider>
 	);
 }
 
