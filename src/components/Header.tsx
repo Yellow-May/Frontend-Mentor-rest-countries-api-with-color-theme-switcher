@@ -3,13 +3,11 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import Brightness4Icon from "@material-ui/icons/Brightness4";
+import Brightness7Icon from "@material-ui/icons/Brightness7";
 import NightsStayIcon from "@material-ui/icons/NightsStay";
 import useStyles from "./../useStyles";
 
-const Header = () => {
-	const [darkMode, setDarkMode] = React.useState(false);
-
+const Header = (props: { event: () => void; dark: boolean }) => {
 	const classes = useStyles();
 
 	return (
@@ -29,14 +27,10 @@ const Header = () => {
 					Where in the world?
 				</Typography>
 
-				<Button
-					color='inherit'
-					onClick={() =>
-						darkMode ? setDarkMode(false) : setDarkMode(true)
-					}>
-					{darkMode ? <Brightness4Icon /> : <NightsStayIcon />}
+				<Button color='inherit' onClick={() => props.event()}>
+					{props.dark ? <Brightness7Icon /> : <NightsStayIcon />}
 					<Typography variant='button' style={{ marginLeft: "1rem" }}>
-						{darkMode ? "Light Mode" : "Dark Mode"}
+						{props.dark ? "Light Mode" : "Dark Mode"}
 					</Typography>
 				</Button>
 			</Toolbar>
