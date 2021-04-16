@@ -14,6 +14,13 @@ const useStyles = makeStyles((theme: Theme) =>
 				padding: "0 3.5rem",
 			},
 		},
+		btnTypo: {
+			display: "none",
+			[theme.breakpoints.up("sm")]: {
+				marginLeft: theme.spacing(1),
+				display: "block",
+			},
+		},
 
 		// App component
 		gridSpacing: {
