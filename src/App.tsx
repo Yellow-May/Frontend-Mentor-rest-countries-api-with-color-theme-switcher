@@ -15,7 +15,7 @@ import Filters from "./components/Filters";
 import Countries from "./components/Countries";
 
 import useStyles from "./useStyles";
-import { AppProvider } from "./store";
+import { AppStore } from "./store";
 
 const themeType = (dark: boolean) =>
 	createMuiTheme({
@@ -27,10 +27,19 @@ const themeType = (dark: boolean) =>
 function App() {
 	const [dark, setDark] = React.useState(false);
 
+	const { events } = React.useContext(AppStore);
+
 	// Use system's dark or light mode settings
 	const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
 	React.useEffect(() => setDark(prefersDarkMode), [prefersDarkMode]);
+
+	React.useEffect(() => {
+		fetch("https://restcountries.eu/rest/v2/all")
+			.then(res => res.json())
+			.then(data => events.storeFetchedData(data))
+			.catch(err => console.log(new Error(err)));
+	}, []);
 
 	const theme = responsiveFontSizes(themeType(dark));
 
@@ -39,28 +48,31 @@ function App() {
 	const changeTheme = () => setDark(!dark);
 
 	return (
-		<AppProvider>
-			<ThemeProvider theme={theme}>
-				<CssBaseline />
-				<Paper elevation={0} square={true}>
-					<Header event={changeTheme} dark={dark} />
-					<Container>
-						<Grid container style={{ padding: "2rem 0" }}>
-							<Grid
-								item
-								container
-								xs={12}
-								className={classes.gridSpacing}>
-								<Filters />
-							</Grid>
-							<Grid item xs={12} className={classes.gridSpacing}>
-								<Countries />
-							</Grid>
+		<ThemeProvider theme={theme}>
+			<CssBaseline />
+			<Paper elevation={0} square={true}>
+				<Header event={changeTheme} dark={dark} />
+				<Container>
+					<Grid container style={{ padding: "2rem 0" }}>
+						<Grid
+							item
+							container
+							xs={12}
+							className={classes.gridSpacing}>
+							<Filters />
 						</Grid>
-					</Container>
-				</Paper>
-			</ThemeProvider>
-		</AppProvider>
+						<Grid
+							item
+							container
+							xs={12}
+							spacing={5}
+							className={classes.gridSpacing}>
+							<Countries />
+						</Grid>
+					</Grid>
+				</Container>
+			</Paper>
+		</ThemeProvider>
 	);
 }
 
