@@ -9,11 +9,14 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchIcon from "@material-ui/icons/Search";
 
 import useStyles from "./../useStyles";
+import { AppStore } from "./../store";
 
 const filterBy = ["Africa", "America", "Asia", "Europe", "Oceanic"];
 
 const Filters = () => {
 	const classes = useStyles();
+
+	const { events } = React.useContext(AppStore);
 
 	const [formData, setFormData] = React.useState({
 		searchBy: "",
@@ -29,6 +32,8 @@ const Filters = () => {
 				[event.target.name as string]: event.target.value as string,
 			};
 		});
+		if (event.target.name === "searchBy")
+			events.search(event.target.value as string);
 	};
 
 	return (
