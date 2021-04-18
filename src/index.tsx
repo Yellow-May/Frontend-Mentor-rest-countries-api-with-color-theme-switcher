@@ -1,14 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import { AppProvider } from "./store";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+	<AppProvider>
+		<React.StrictMode>
+			<App />
+		</React.StrictMode>
+	</AppProvider>,
+	document.getElementById("root")
 );
 
 reportWebVitals();
