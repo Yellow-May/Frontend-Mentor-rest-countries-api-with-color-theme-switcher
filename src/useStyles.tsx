@@ -26,6 +26,8 @@ const useStyles = makeStyles((theme: Theme) =>
 		gridSpacing: {
 			marginTop: theme.spacing(2),
 			marginBottom: theme.spacing(2),
+			marginLeft: 0,
+			marginRight: 0,
 			[theme.breakpoints.up("md")]: {
 				marginTop: theme.spacing(3),
 				marginBottom: theme.spacing(3),
@@ -37,6 +39,17 @@ const useStyles = makeStyles((theme: Theme) =>
 			marginTop: theme.spacing(3),
 			[theme.breakpoints.up("sm")]: {
 				marginTop: 0,
+			},
+		},
+
+		// Countries components
+		cardMedia: {
+			height: 200,
+			[theme.breakpoints.up("sm")]: {
+				height: 250,
+			},
+			[theme.breakpoints.up("md")]: {
+				height: 200,
 			},
 		},
 	})
