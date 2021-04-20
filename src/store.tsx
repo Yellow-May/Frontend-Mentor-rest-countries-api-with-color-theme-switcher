@@ -4,10 +4,12 @@ import Reducer from "./Reducer";
 export const initialState: {
 	originalData: any[];
 	modifiedData: any[];
+	filteredData: any[];
 	country: {};
 } = {
 	originalData: [],
 	modifiedData: [],
+	filteredData: [],
 	country: {},
 };
 
@@ -26,9 +28,12 @@ export const AppProvider: React.FC = ({ children }) => {
 
 	const search = (payload: string) => dispatch({ type: "SEARCH", payload });
 
+	const filter = (payload: string) => dispatch({ type: "FILTER", payload });
+
 	const events = {
 		storeFetchedData,
 		search,
+		filter,
 	};
 
 	return (

@@ -11,7 +11,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import useStyles from "./../useStyles";
 import { AppStore } from "./../store";
 
-const filterBy = ["Africa", "America", "Asia", "Europe", "Oceanic"];
+const filterBy = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
 const Filters = () => {
 	const classes = useStyles();
@@ -34,6 +34,12 @@ const Filters = () => {
 		});
 		if (event.target.name === "searchBy")
 			events.search(event.target.value as string);
+		if (event.target.name === "filterBy") {
+			events.filter(event.target.value as string);
+			setFormData((prevData: typeof formData) => {
+				return { ...prevData, searchBy: "" };
+			});
+		}
 	};
 
 	return (
