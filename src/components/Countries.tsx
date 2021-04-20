@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -14,11 +15,13 @@ const Countries = () => {
 
 	const classes = useStyles();
 
+	const { push } = useHistory();
+
 	return (
 		<>
 			{state.modifiedData.map((data, index) => (
 				<Grid item xs={12} sm={6} md={4} lg={3} key={index}>
-					<Card>
+					<Card onClick={() => push(`/${data.name}`)}>
 						<CardActionArea>
 							<CardMedia
 								className={classes.cardMedia}
