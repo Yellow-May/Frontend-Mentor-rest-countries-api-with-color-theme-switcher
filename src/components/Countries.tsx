@@ -21,7 +21,7 @@ const Countries = () => {
 		<>
 			{state.modifiedData.map((data, index) => (
 				<Grid item xs={12} sm={6} md={4} lg={3} key={index}>
-					<Card onClick={() => push(`/${data.name}`)}>
+					<Card onClick={() => push(`/${data.name}`, data)}>
 						<CardActionArea>
 							<CardMedia
 								className={classes.cardMedia}
