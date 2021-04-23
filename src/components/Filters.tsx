@@ -60,6 +60,7 @@ const Filters = () => {
 							</InputAdornment>
 						}
 						labelWidth={60}
+						autoComplete='off'
 					/>
 				</FormControl>
 			</Grid>
