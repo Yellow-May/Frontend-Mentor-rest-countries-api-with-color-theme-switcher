@@ -46,7 +46,7 @@ const Reducer = (
 				};
 
 		case "FILTER":
-			if (action.payload.length === 0)
+			if (action.payload === "All")
 				return {
 					...storeState,
 					modifiedData: storeState.originalData,

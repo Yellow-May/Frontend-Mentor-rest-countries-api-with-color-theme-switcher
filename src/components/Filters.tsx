@@ -20,7 +20,7 @@ const Filters = () => {
 
 	const [formData, setFormData] = React.useState({
 		searchBy: "",
-		filterBy: "",
+		filterBy: "All",
 	});
 
 	const handleChange = (
@@ -79,8 +79,8 @@ const Filters = () => {
 						value={formData.filterBy}
 						onChange={handleChange}
 						label='Filter by Region'>
-						<MenuItem value=''>
-							<em>None</em>
+						<MenuItem value='All'>
+							<em>All</em>
 						</MenuItem>
 						{filterBy.map(e => (
 							<MenuItem key={e} value={e}>
