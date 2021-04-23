@@ -5,7 +5,7 @@ export const initialState: {
 	originalData: any[];
 	modifiedData: any[];
 	filteredData: any[];
-	country: {};
+	country: any;
 } = {
 	originalData: [],
 	modifiedData: [],
@@ -15,13 +15,13 @@ export const initialState: {
 
 export const AppStore = React.createContext(
 	{} as {
-		state: typeof initialState;
+		storeState: typeof initialState;
 		events: any;
 	}
 );
 
 export const AppProvider: React.FC = ({ children }) => {
-	const [state, dispatch] = React.useReducer(Reducer, initialState);
+	const [storeState, dispatch] = React.useReducer(Reducer, initialState);
 
 	const storeFetchedData = (payload: []) =>
 		dispatch({ type: "STORE_FETCHED_DATA", payload });
@@ -30,14 +30,17 @@ export const AppProvider: React.FC = ({ children }) => {
 
 	const filter = (payload: string) => dispatch({ type: "FILTER", payload });
 
+	const country = (payload: {}) => dispatch({ type: "COUNTRY", payload });
+
 	const events = {
 		storeFetchedData,
 		search,
 		filter,
+		country,
 	};
 
 	return (
-		<AppStore.Provider value={{ state, events }}>
+		<AppStore.Provider value={{ storeState, events }}>
 			{children}
 		</AppStore.Provider>
 	);

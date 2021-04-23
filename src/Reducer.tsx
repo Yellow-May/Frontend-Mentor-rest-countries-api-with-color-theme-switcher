@@ -1,13 +1,13 @@
 import { initialState } from "./store";
 
 const Reducer = (
-	state: typeof initialState,
+	storeState: typeof initialState,
 	action: { type: string; payload?: any }
 ) => {
 	switch (action.type) {
 		case "STORE_FETCHED_DATA":
 			return {
-				...state,
+				...storeState,
 				originalData: action.payload,
 				modifiedData: action.payload,
 				filteredData: action.payload,
@@ -16,13 +16,13 @@ const Reducer = (
 		case "SEARCH":
 			if (action.payload.length === 0)
 				return {
-					...state,
-					modifiedData: state.filteredData,
+					...storeState,
+					modifiedData: storeState.filteredData,
 				};
 			else
 				return {
-					...state,
-					modifiedData: state.filteredData.filter(data => {
+					...storeState,
+					modifiedData: storeState.filteredData.filter(data => {
 						let names = [
 							...data.altSpellings,
 							data.name,
@@ -46,24 +46,31 @@ const Reducer = (
 				};
 
 		case "FILTER":
-			if (action.payload === "")
+			if (action.payload.length === 0)
 				return {
-					...state,
-					modifiedData: state.originalData,
-					filteredData: state.originalData,
+					...storeState,
+					modifiedData: storeState.originalData,
+					filteredData: storeState.originalData,
 				};
 			else
 				return {
-					...state,
-					modifiedData: state.originalData.filter(
+					...storeState,
+					modifiedData: storeState.originalData.filter(
 						data => data.region === action.payload
 					),
-					filteredData: state.originalData.filter(
+					filteredData: storeState.originalData.filter(
 						data => data.region === action.payload
 					),
 				};
+
+		case "COUNTRY":
+			return {
+				...storeState,
+				country: action.payload,
+			};
+
 		default:
-			return state;
+			return storeState;
 	}
 };
 
