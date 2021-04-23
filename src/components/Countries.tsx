@@ -6,12 +6,13 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
+import Typo1 from "./reuseables/Typo1";
 
 import useStyles from "./../useStyles";
 import { AppStore } from "./../store";
 
 const Countries = () => {
-	const { state } = React.useContext(AppStore);
+	const { storeState } = React.useContext(AppStore);
 
 	const classes = useStyles();
 
@@ -19,7 +20,7 @@ const Countries = () => {
 
 	return (
 		<>
-			{state.modifiedData.map((data, index) => (
+			{storeState.modifiedData.map((data, index) => (
 				<Grid item xs={12} sm={6} md={4} lg={3} key={index}>
 					<Card onClick={() => push(`/${data.name}`, data)}>
 						<CardActionArea>
@@ -34,52 +35,14 @@ const Countries = () => {
 									style={{ marginBottom: 15 }}>
 									{data.name}
 								</Typography>
-								<Typography
-									component='div'
-									style={{ marginBottom: 5 }}>
-									<Typography
-										variant='body1'
-										component='span'>
-										Population:
-									</Typography>
-									<Typography
-										color='textSecondary'
-										variant='body2'
-										component='span'>
-										{" " +
-											parseInt(
-												data.population
-											).toLocaleString()}
-									</Typography>
-								</Typography>
-								<Typography
-									component='div'
-									style={{ marginBottom: 5 }}>
-									<Typography
-										variant='body1'
-										component='span'>
-										Region:
-									</Typography>
-									<Typography
-										color='textSecondary'
-										variant='body2'
-										component='span'>
-										{" " + data.region}
-									</Typography>
-								</Typography>
-								<Typography component='div'>
-									<Typography
-										variant='body1'
-										component='span'>
-										Capital:
-									</Typography>
-									<Typography
-										color='textSecondary'
-										variant='body2'
-										component='span'>
-										{" " + data.capital}
-									</Typography>
-								</Typography>
+								<Typo1
+									txt1='Population'
+									txt2={parseInt(
+										data.population
+									).toLocaleString()}
+								/>
+								<Typo1 txt1='Region' txt2={data.region} />
+								<Typo1 txt1='Capital' txt2={data.capital} />
 							</CardContent>
 						</CardActionArea>
 					</Card>
