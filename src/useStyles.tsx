@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme: Theme) =>
 			},
 		},
 
-		// Countries components
+		// Countries component
 		cardMedia: {
 			height: 200,
 			[theme.breakpoints.up("sm")]: {
@@ -51,6 +51,56 @@ const useStyles = makeStyles((theme: Theme) =>
 			[theme.breakpoints.up("md")]: {
 				height: 200,
 			},
+		},
+
+		// Country component
+		countryContainer: {
+			minHeight: "90vh",
+			paddingTop: "2rem",
+			paddingBottom: "2rem",
+			[theme.breakpoints.up("sm")]: {
+				paddingTop: "3rem",
+				paddingBottom: "3rem",
+			},
+			[theme.breakpoints.up("md")]: {
+				paddingTop: "4rem",
+				paddingBottom: "4rem",
+			},
+		},
+		countryGridContainer: {
+			marginTop: "2rem",
+			[theme.breakpoints.up("sm")]: {
+				marginTop: "3rem",
+			},
+			[theme.breakpoints.up("md")]: {
+				marginTop: "4rem",
+			},
+		},
+		countryFlag: {
+			width: "100%",
+		},
+		countryGridSectionII: {
+			paddingLeft: 0,
+			paddingTop: "10%",
+			[theme.breakpoints.up("sm")]: {
+				paddingLeft: "5%",
+				paddingTop: 0,
+			},
+			[theme.breakpoints.up("md")]: {
+				paddingLeft: "10%",
+			},
+		},
+		countryGridBorderText: {
+			display: "block",
+			[theme.breakpoints.up("sm")]: {
+				display: "inline-block",
+			},
+		},
+		btnTxt: {
+			...theme.typography.button,
+			backgroundColor: theme.palette.background.paper,
+			padding: theme.spacing(1),
+			marginRight: theme.spacing(1),
 		},
 	})
 );
