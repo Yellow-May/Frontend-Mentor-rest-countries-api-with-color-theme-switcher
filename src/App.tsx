@@ -46,6 +46,7 @@ function App() {
 						" please check your connection and reload your browser"
 				)
 			);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const theme = responsiveFontSizes(themeType(dark));

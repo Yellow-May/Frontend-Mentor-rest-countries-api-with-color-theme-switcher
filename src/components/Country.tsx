@@ -15,7 +15,11 @@ const Country = () => {
 
 	const { storeState, events } = React.useContext(AppStore);
 
-	React.useEffect(() => events.country(state), []);
+	React.useEffect(
+		() => events.country(state),
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		[]
+	);
 
 	const classes = useStyles();
 
